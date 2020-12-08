@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from '../components/Card';
 import Container from 'react-bootstrap/esm/Container';
 import pizza from '../assets/images/pizza.jpg';
 import password from '../assets/images/password.jpg';
@@ -6,6 +7,7 @@ import weights from '../assets/images/weights.jpeg';
 import money from '../assets/images/money.jpg';
 import busy from '../assets/images/busy.jpg';
 import basketball from '../assets/images/basketball.jpg';
+import Row from 'react-bootstrap/Row';
 
 class Carousel extends React.Component {
     constructor(props) {
@@ -87,14 +89,16 @@ class Carousel extends React.Component {
 
     makeItems = (items) => {
         return items.map(item => {
-            return <card item={item} click={(e => this.handleCardClick(item.id, e))} key={item.id} />
+            return <Card item={item} click={(e => this.handleCardClick(item.id, e))} key={item.id} />
         })
     }
     
     render() {
         return(
             <Container>
-
+                <Row className="justify-content-around">
+                    {this.makeItems(this.state.items)}
+                </Row>
             </Container>
         );
     }
